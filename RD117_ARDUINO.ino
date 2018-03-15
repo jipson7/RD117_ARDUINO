@@ -148,10 +148,10 @@ void loop() {
       un_min=aun_red_buffer[i];  //update signal min
     if(un_max<aun_red_buffer[i])
       un_max=aun_red_buffer[i];  //update signal max
-    Serial.print(F("red="));
-    Serial.print(aun_red_buffer[i], DEC);
-    Serial.print(F(", ir="));
-    Serial.println(aun_ir_buffer[i], DEC);
+    //Serial.print(F("red="));
+    //Serial.print(aun_red_buffer[i], DEC);
+    //Serial.print(F(", ir="));
+    //Serial.println(aun_ir_buffer[i], DEC);
   }
   un_prev_data=aun_red_buffer[i];
   //calculate heart rate and SpO2 after first 100 samples (first 4 seconds of samples)
@@ -216,22 +216,25 @@ void loop() {
 #endif
 
       //send samples and calculation result to terminal program through UART
+
+      //result = "{";
+      
       Serial.print(F("{"));
       Serial.print(F("\"red\":"));
       Serial.print(aun_red_buffer[i], DEC);
-      Serial.print(F(", \"ir\":"));
+      Serial.print(F(",\"ir\":"));
       Serial.print(aun_ir_buffer[i], DEC);
       
-      Serial.print(F(", \"HR\":"));
+      Serial.print(F(",\"HR\":"));
       Serial.print(n_heart_rate, DEC);
       
-      Serial.print(F(", \"HRvalid\":"));
+      Serial.print(F(",\"HRvalid\":"));
       Serial.print(ch_hr_valid, DEC);
       
-      Serial.print(F(", \"SPO2\":"));
+      Serial.print(F(",\"SPO2\":"));
       Serial.print(n_spo2, DEC);
 
-      Serial.print(F(", \"SPO2Valid\":"));
+      Serial.print(F(",\"SPO2Valid\":"));
       Serial.print(ch_spo2_valid, DEC);
       Serial.println(F("}"));
     }
