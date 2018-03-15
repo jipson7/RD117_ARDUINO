@@ -123,20 +123,6 @@ void setup() {
   pinMode(10, INPUT);  //pin D10 connects to the interrupt output pin of the MAX30102
   delay(1000);
   maxim_max30102_read_reg(REG_INTR_STATUS_1,&uch_dummy);  //Reads/clears the interrupt status register
-  while(Serial.available()==0)  //wait until user presses a key
-  {
-    Serial.write(27);       // ESC command
-    Serial.print(F("[2J"));    // clear screen command
-#if defined(ARDUINO_AVR_LILYPAD_USB)    
-    Serial.println(F("Lilypad"));
-#endif
-#if defined(ARDUINO_AVR_FLORA8)
-    Serial.println(F("Adafruit Flora"));
-#endif
-    Serial.println(F("Press any key to start conversion"));
-    delay(1000);
-  }
-  uch_dummy=Serial.read();
   maxim_max30102_init();  //initialize the MAX30102
 }
 
