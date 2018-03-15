@@ -222,7 +222,7 @@ void loop() {
       result += ",\"ir\":" + String(aun_ir_buffer[i], DEC);
       
       result += ",\"HR\":" + String(n_heart_rate, DEC);
-      result += ",\"HRvalid\":" + String(ch_hr_valid, DEC);
+      result += ",\"HRValid\":" + String(ch_hr_valid, DEC);
       
       result += ",\"SPO2\":" + String(n_spo2, DEC);
       result += ",\"SPO2Valid\":" + String(ch_spo2_valid, DEC);
