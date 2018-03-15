@@ -217,26 +217,18 @@ void loop() {
 
       //send samples and calculation result to terminal program through UART
 
-      //result = "{";
+      String result = "{";
+      result += "\"red\":" + String(aun_red_buffer[i], DEC);
+      result += ",\"ir\":" + String(aun_ir_buffer[i], DEC);
       
-      Serial.print(F("{"));
-      Serial.print(F("\"red\":"));
-      Serial.print(aun_red_buffer[i], DEC);
-      Serial.print(F(",\"ir\":"));
-      Serial.print(aun_ir_buffer[i], DEC);
+      result += ",\"HR\":" + String(n_heart_rate, DEC);
+      result += ",\"HRvalid\":" + String(ch_hr_valid, DEC);
       
-      Serial.print(F(",\"HR\":"));
-      Serial.print(n_heart_rate, DEC);
-      
-      Serial.print(F(",\"HRvalid\":"));
-      Serial.print(ch_hr_valid, DEC);
-      
-      Serial.print(F(",\"SPO2\":"));
-      Serial.print(n_spo2, DEC);
+      result += ",\"SPO2\":" + String(n_spo2, DEC);
+      result += ",\"SPO2Valid\":" + String(ch_spo2_valid, DEC);
+      result += "}"; 
 
-      Serial.print(F(",\"SPO2Valid\":"));
-      Serial.print(ch_spo2_valid, DEC);
-      Serial.println(F("}"));
+      Serial.println(result);
     }
     maxim_heart_rate_and_oxygen_saturation(aun_ir_buffer, n_ir_buffer_length, aun_red_buffer, &n_spo2, &ch_spo2_valid, &n_heart_rate, &ch_hr_valid); 
   }
