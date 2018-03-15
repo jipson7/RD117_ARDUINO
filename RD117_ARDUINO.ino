@@ -216,22 +216,24 @@ void loop() {
 #endif
 
       //send samples and calculation result to terminal program through UART
-      Serial.print(F("red="));
+      Serial.print(F("{"));
+      Serial.print(F("\"red\":"));
       Serial.print(aun_red_buffer[i], DEC);
-      Serial.print(F(", ir="));
+      Serial.print(F(", \"ir\":"));
       Serial.print(aun_ir_buffer[i], DEC);
       
-      Serial.print(F(", HR="));
+      Serial.print(F(", \"HR\":"));
       Serial.print(n_heart_rate, DEC);
       
-      Serial.print(F(", HRvalid="));
+      Serial.print(F(", \"HRvalid\":"));
       Serial.print(ch_hr_valid, DEC);
       
-      Serial.print(F(", SPO2="));
+      Serial.print(F(", \"SPO2\":"));
       Serial.print(n_spo2, DEC);
 
-      Serial.print(F(", SPO2Valid="));
-      Serial.println(ch_spo2_valid, DEC);
+      Serial.print(F(", \"SPO2Valid\":"));
+      Serial.print(ch_spo2_valid, DEC);
+      Serial.println(F("}"));
     }
     maxim_heart_rate_and_oxygen_saturation(aun_ir_buffer, n_ir_buffer_length, aun_red_buffer, &n_spo2, &ch_spo2_valid, &n_heart_rate, &ch_hr_valid); 
   }
